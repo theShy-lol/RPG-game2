@@ -5,6 +5,7 @@
 
 Player::Player(sf::Vector2f v) {
 	this->Velocity = v;
+	this->playerTexture.setSmooth(false);
 	if (!this->playerTexture.loadFromFile("rotations/south.png")) {
 		std::cout << "Texture couldn't load" <<std::endl;
 	}
@@ -15,16 +16,27 @@ void Player::move(float dt) {
 	this->Velocity.x = 0.f;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 		this->Velocity.x = -360.f;
+		if (!this->playerTexture.loadFromFile("rotations/west.png")) {
+			std::cout << "Texture couldn't load" << std::endl;
+		}
+		this->playerSprite.setTexture(this->playerTexture);
 	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+	
+	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
 		this->Velocity.x = 360.f;
+		if (!this->playerTexture.loadFromFile("rotations/east.png")) {
+			std::cout << "Texture couldn't load" << std::endl;
+		}
+		this->playerSprite.setTexture(this->playerTexture);
+	}
+	else {
+		if (!this->playerTexture.loadFromFile("rotations/south.png")) {
+			std::cout << "Texture couldn't load" << std::endl;
+		}
+		this->playerSprite.setTexture(this->playerTexture);
 	}
 	if (this->playerSprite.getPosition().x < 0) {
 		this->playerSprite.setPosition(0.f,
-			this->playerSprite.getPosition().y);
-	}
-	if (this->playerSprite.getPosition().x > 1230) {
-		this->playerSprite.setPosition(1230.f,
 			this->playerSprite.getPosition().y);
 	}
 }
@@ -50,4 +62,7 @@ void Player::update(float dt) {
 		this->Velocity.y = 0.f;
 		this->inAir = false;
 	}
+}
+float Player::getXPosition() {
+	return this->playerSprite.getPosition().x;
 }

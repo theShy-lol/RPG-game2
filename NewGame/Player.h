@@ -10,6 +10,7 @@ public:
 	void draw(sf::RenderWindow& w);
 	void move(float dt);
 	void jump();
+	float getXPosition();
 private:
 	sf::Texture playerTexture;
 	sf::Sprite playerSprite;
