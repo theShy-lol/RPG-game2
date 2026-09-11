@@ -5,13 +5,13 @@
 
 class Player {
 public:
-	Player(sf::Vector2f v);
+	Player(sf::Vector2f v, sf::Texture pT, sf::Sprite pS);
 	void update(float dt);
 	void draw(sf::RenderWindow& w);
 	void move(float dt);
 	void jump();
 	float getXPosition();
-private:
+protected:
 	sf::Texture playerTexture;
 	sf::Sprite playerSprite;
 	sf::Vector2f Velocity;

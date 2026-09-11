@@ -3,6 +3,7 @@
 #include"Constants.h"
 #include"Player.h"
 #include"Terrain.h"
+#include"Enemy.h"
 
 int main() {
 	//Window
@@ -16,9 +17,12 @@ int main() {
 	sf::Vector2f velocity(250.f, 250.f);
 	float dt = 0;
 	bool inAir = false;
+	sf::Texture t;
+	sf::Sprite s;
 	//Entities
-	Player player(velocity);
+	Player player(velocity, t, s);
 	Terrain terrain(100);
+	Enemy enemy(t, s, velocity);
 
 	//Main loop
 	while (window.isOpen()) {
@@ -40,6 +44,7 @@ int main() {
 		window.clear(sf::Color::Black);
 		terrain.drawTerrain(window);
 		player.draw(window);
+		enemy.draw(window);
 		window.display();
 	}
 }

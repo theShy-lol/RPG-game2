@@ -3,7 +3,9 @@
 #include"Player.h"
 #include"Constants.h"
 
-Player::Player(sf::Vector2f v) {
+Player::Player(sf::Vector2f v, sf::Texture pT, sf::Sprite pS) {
+	this->playerTexture = pT;
+	this->playerSprite = pS;
 	this->Velocity = v;
 	this->playerTexture.setSmooth(false);
 	if (!this->playerTexture.loadFromFile("rotations/south.png")) {

@@ -1,7 +1,7 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\main.cpp",
+        "Source": "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\enemy.cpp",
         "ProvidedModule": "",
         "Includes": [
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\iostream",
@@ -220,9 +220,8 @@
             "c:\\users\\lucas\\downloads\\sfml\\sfml-2.6.1\\include\\sfml\\graphics\\text.hpp",
             "c:\\users\\lucas\\downloads\\sfml\\sfml-2.6.1\\include\\sfml\\graphics\\vertexbuffer.hpp",
             "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\constants.h",
-            "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\player.h",
-            "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\terrain.h",
-            "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\enemy.h"
+            "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\enemy.h",
+            "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\player.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []
