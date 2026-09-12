@@ -41,6 +41,7 @@ int main() {
 		player.move(dt);
 		player.jump();
 		player.update(dt);
+		enemy.update(dt);
 		window.clear(sf::Color::Black);
 		terrain.drawTerrain(window);
 		player.draw(window);
