@@ -5,6 +5,8 @@
 #include"Terrain.h"
 #include"Enemy.h"
 
+
+
 int main() {
 	//Window
 	sf::RenderWindow window(sf::VideoMode({ SCREEN_WIDTH,SCREEN_HEIGHT }),"RPG");
@@ -42,6 +44,7 @@ int main() {
 		player.jump();
 		player.update(dt);
 		enemy.update(dt);
+		player.collision(enemy.getEnemy());
 		window.clear(sf::Color::Black);
 		terrain.drawTerrain(window);
 		player.draw(window);

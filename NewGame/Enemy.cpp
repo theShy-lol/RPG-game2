@@ -37,4 +37,7 @@ void Enemy::update(float dt) {
 		this->playerSprite.setTexture(this->playerTexture);
 	}
 }
+sf::Sprite& Enemy::getEnemy() {
+	return this->playerSprite;
+}
 
