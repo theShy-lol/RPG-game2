@@ -1,2 +1,5 @@
-﻿  Player.cpp
+﻿  Enemy.cpp
+  Player.cpp
+  main.cpp
+  Generating Code...
   NewGame.vcxproj -> C:\Users\Lucas\source\repos\NewGame\x64\Debug\NewGame.exe

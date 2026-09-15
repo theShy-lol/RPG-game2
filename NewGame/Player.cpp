@@ -68,12 +68,15 @@ void Player::update(float dt) {
 float Player::getXPosition() {
 	return this->playerSprite.getPosition().x;
 }
-void Player::collision(sf::Sprite& eS) {
+void Player::collision(sf::Sprite& eS, bool f) {
 	sf::FloatRect playerBound = this->playerSprite.getGlobalBounds();
 	sf::FloatRect enemyBounds = eS.getGlobalBounds();
 	if (playerBound.intersects(enemyBounds)) {
 		this->health -= 10;
 		this->playerSprite.move(this->Velocity.x - 2.f, this->Velocity.y);
+		if (f == true) {
+			this->playerSprite.move(this->Velocity.x + 2.f, this->Velocity.y);
+		}
 	}
 
 }

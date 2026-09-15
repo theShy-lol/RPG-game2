@@ -27,6 +27,7 @@ void Enemy::update(float dt) {
 			std::cout << "Texture couldn't load" << std::endl;
 		}
 		this->playerSprite.setTexture(this->playerTexture);
+		
 	}
 	if (this->playerSprite.getPosition().x > SCREEN_WIDTH) {
 		this->speedX = -std::abs(this->speedX);
@@ -40,4 +41,6 @@ void Enemy::update(float dt) {
 sf::Sprite& Enemy::getEnemy() {
 	return this->playerSprite;
 }
+
+
 

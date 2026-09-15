@@ -8,6 +8,7 @@ public:
 	Enemy(sf::Texture et, sf::Sprite es, sf::Vector2f v);
 	void update(float dt) override;
 	sf::Sprite& getEnemy();
+	bool isFacing();
 private:
 	float speedX = -150.f;
 };
