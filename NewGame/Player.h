@@ -18,6 +18,8 @@ protected:
 	sf::Vector2f Velocity;
 	float gravity = 950.f;
 	int health = 100;
+	sf::Clock dmgTime;
+	float iFrames = 0.5f;
 	bool inAir;
 
 };
