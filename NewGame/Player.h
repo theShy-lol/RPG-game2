@@ -1,6 +1,7 @@
 #pragma once
 #include<iostream>
 #include<SFML/Graphics.hpp>
+#include"Weapons.h"
 
 
 class Player {
@@ -11,6 +12,7 @@ public:
 	void draw(sf::RenderWindow& w);
 	void move(float dt);
 	void jump();
+	void attack();
 	float getXPosition();
 protected:
 	sf::Texture playerTexture;
@@ -18,8 +20,10 @@ protected:
 	sf::Vector2f Velocity;
 	float gravity = 950.f;
 	int health = 100;
+	int damage = 10;
 	sf::Clock dmgTime;
 	float iFrames = 0.5f;
 	bool inAir;
+	Weapons playerWeapon;
 
 };

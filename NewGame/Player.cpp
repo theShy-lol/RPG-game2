@@ -54,6 +54,7 @@ void Player::jump() {
 
 void Player::draw(sf::RenderWindow& w) {
 	w.draw(this->playerSprite);
+	this->playerWeapon.drawWeapon(w);
 }
 void Player::update(float dt) {
 	this->Velocity.y += this->gravity * dt;
@@ -87,5 +88,10 @@ void Player::collision(sf::Sprite& eS) {
 			this->playerSprite.move(knobackStr, -knobackStr / 2.f);
 			this->Velocity.x = 5.f;
 		}
+	}
+}
+void Player::attack() {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::L)) {
+		this->playerWeapon.slide();
 	}
 }

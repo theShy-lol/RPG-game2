@@ -4,6 +4,7 @@
 #include"Player.h"
 #include"Terrain.h"
 #include"Enemy.h"
+#include"Weapons.h"
 
 
 
@@ -25,7 +26,7 @@ int main() {
 	Player player(velocity, t, s);
 	Terrain terrain(100);
 	Enemy enemy(t, s, velocity);
-
+	Weapons weapon;
 	//Main loop
 	while (window.isOpen()) {
 		camera.setCenter(sf::Vector2f(player.getXPosition(), SCREEN_HEIGHT / 2));
@@ -42,6 +43,7 @@ int main() {
 		window.setView(camera);
 		player.move(dt);
 		player.jump();
+		player.attack();
 		player.update(dt);
 		enemy.update(dt);
 		player.collision(enemy.getEnemy());
