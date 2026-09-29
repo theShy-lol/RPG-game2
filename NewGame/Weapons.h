@@ -10,4 +10,5 @@ public:
 private:
 	sf::RectangleShape weapon;
 	int damage;
+	bool weaponDown = false;
 };
