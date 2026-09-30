@@ -7,6 +7,8 @@ Player::Player(sf::Vector2f v, sf::Texture pT, sf::Sprite pS) {
 	this->playerTexture = pT;
 	this->playerSprite = pS;
 	this->Velocity = v;
+	this->rightSight = true;
+	this->seeWeapon = true;
 	this->playerTexture.setSmooth(false);
 	if (!this->playerTexture.loadFromFile("rotations/south.png")) {
 		std::cout << "Texture couldn't load" <<std::endl;
@@ -22,6 +24,7 @@ void Player::move(float dt) {
 			std::cout << "Texture couldn't load" << std::endl;
 		}
 		this->playerSprite.setTexture(this->playerTexture);
+		this->rightSight = false;
 	}
 	
 	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
@@ -30,6 +33,7 @@ void Player::move(float dt) {
 			std::cout << "Texture couldn't load" << std::endl;
 		}
 		this->playerSprite.setTexture(this->playerTexture);
+		this->rightSight = true;
 	}
 	else {
 		if (!this->playerTexture.loadFromFile("rotations/south.png")) {
@@ -54,11 +58,21 @@ void Player::jump() {
 
 void Player::draw(sf::RenderWindow& w) {
 	w.draw(this->playerSprite);
-	this->playerWeapon.drawWeapon(w);
+	if (this->seeWeapon) {
+		this->playerWeapon.drawWeapon(w);
+	}
 }
 void Player::update(float dt) {
 	this->Velocity.y += this->gravity * dt;
 	this->playerSprite.move(this->Velocity.x * dt, this->Velocity.y * dt);
+	if (this->rightSight) {
+		this->playerWeapon.updateWeapon(this->playerSprite.getPosition().x + 18,
+		this->playerSprite.getPosition().y + 23);
+	}
+	else {
+		this->playerWeapon.updateWeapon(this->playerSprite.getPosition().x,
+			this->playerSprite.getPosition().y + 23);
+	}
 	if (this->playerSprite.getPosition().y > GROUND_POSITION) {
 		this->playerSprite.setPosition(this->playerSprite.getPosition().x,
 			GROUND_POSITION);
@@ -69,7 +83,7 @@ void Player::update(float dt) {
 float Player::getXPosition() {
 	return this->playerSprite.getPosition().x;
 }
-void Player::collision(sf::Sprite& eS) {
+bool Player::collision(sf::Sprite& eS) {
 	sf::FloatRect playerBound = this->playerSprite.getGlobalBounds();
 	sf::FloatRect enemyBounds = eS.getGlobalBounds();
 	if (playerBound.intersects(enemyBounds)) {
@@ -88,10 +102,18 @@ void Player::collision(sf::Sprite& eS) {
 			this->playerSprite.move(knobackStr, -knobackStr / 2.f);
 			this->Velocity.x = 5.f;
 		}
+		return true;
 	}
+	return false;
 }
 void Player::attack() {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::L)) {
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 		this->playerWeapon.slide();
 	}
+	else {
+		this->playerWeapon.recoil();
+	}
+}
+void Player::getHit(int& dmg) {
+	this->health -= dmg;
 }

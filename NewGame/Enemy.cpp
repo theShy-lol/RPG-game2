@@ -6,6 +6,8 @@
 
 Enemy::Enemy(sf::Texture eT, sf::Sprite pS, sf::Vector2f v) : Player(v,eT, pS) {
 	this->playerTexture = eT;
+	this->seeWeapon = false;
+	this->health = 20;
 	this->playerTexture.setSmooth(false);
 	if (!this->playerTexture.loadFromFile("enemy/south.png")) {
 		std::cout << "Texture couldn't load" << std::endl;
@@ -40,6 +42,17 @@ void Enemy::update(float dt) {
 }
 sf::Sprite& Enemy::getEnemy() {
 	return this->playerSprite;
+}
+void Enemy::die() {
+	if (this->health <= 0) {
+		this->playerSprite.scale(sf::Vector2f(0.f, 0.f));
+	}
+}
+int& Enemy::enemyDmg()  {
+	return this->damage;
+}
+void Enemy::getHit(int &dmg) override {
+
 }
 
 

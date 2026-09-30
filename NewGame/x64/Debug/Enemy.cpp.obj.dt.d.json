@@ -221,7 +221,8 @@
             "c:\\users\\lucas\\downloads\\sfml\\sfml-2.6.1\\include\\sfml\\graphics\\vertexbuffer.hpp",
             "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\constants.h",
             "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\enemy.h",
-            "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\player.h"
+            "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\player.h",
+            "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\weapons.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

@@ -8,11 +8,12 @@ class Player {
 public:
 	Player(sf::Vector2f v, sf::Texture pT, sf::Sprite pS);
 	virtual void update(float dt);
-	void collision(sf::Sprite& eS);
+	bool collision(sf::Sprite& eS);
 	void draw(sf::RenderWindow& w);
 	void move(float dt);
 	void jump();
 	void attack();
+	virtual void getHit(int& dmg);
 	float getXPosition();
 protected:
 	sf::Texture playerTexture;
@@ -24,6 +25,9 @@ protected:
 	sf::Clock dmgTime;
 	float iFrames = 0.5f;
 	bool inAir;
+	bool seeWeapon;
+	bool rightSight;
 	Weapons playerWeapon;
+	
 
 };
