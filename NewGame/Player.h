@@ -28,6 +28,4 @@ protected:
 	bool seeWeapon;
 	bool rightSight;
 	Weapons playerWeapon;
-	
-
 };

@@ -51,8 +51,22 @@ void Enemy::die() {
 int& Enemy::enemyDmg()  {
 	return this->damage;
 }
-void Enemy::getHit(int &dmg) override {
 
+bool Enemy::collisionEnemy(Weapons& sword) {
+	float KnockBackStr = 10.f;
+	sf::FloatRect swordBounds = sword.getWeaponBounds();
+	sf::FloatRect enemyBound = this->playerSprite.getGlobalBounds();
+	if (enemyBound.intersects(swordBounds)) {
+		float enemyCentreX = enemyBound.left + (enemyBound.width / 2);
+		if (enemyCentreX < swordBounds.width) {
+			this->playerSprite.move(KnockBackStr, -KnockBackStr / 2);
+		}
+		else {
+			this->playerSprite.move(-KnockBackStr, -KnockBackStr / 2);
+		}
+		return true;
+	}
+	return false;
 }
 
 

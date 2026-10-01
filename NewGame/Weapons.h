@@ -7,6 +7,8 @@ public:
 	Weapons();
 	void drawWeapon(sf::RenderWindow &w);
 	void updateWeapon(int posx, int posy);
+	int& getDamage();
+	sf::FloatRect getWeaponBounds();
 	void recoil();
 	void slide();
 private:

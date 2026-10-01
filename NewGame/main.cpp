@@ -26,6 +26,7 @@ int main() {
 	Player player(velocity, t, s);
 	Terrain terrain(100);
 	Enemy enemy(t, s, velocity);
+	Weapons weapon;
 	//Main loop
 	while (window.isOpen()) {
 		camera.setCenter(sf::Vector2f(player.getXPosition(), SCREEN_HEIGHT / 2));
@@ -42,11 +43,15 @@ int main() {
 		window.setView(camera);
 		player.move(dt);
 		player.jump();
+		enemy.die();
 		player.attack();
 		player.update(dt);
 		enemy.update(dt);
 		if (player.collision(enemy.getEnemy()) == true) {
 			player.getHit(enemy.enemyDmg());
+		}
+		if (enemy.collisionEnemy(weapon) == true) {
+			enemy.getHit(weapon.getDamage());
 		}
 		window.clear(sf::Color::Black);
 		terrain.drawTerrain(window);

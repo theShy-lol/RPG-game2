@@ -29,3 +29,11 @@ void Weapons::recoil() {
 void Weapons::updateWeapon(int posx, int posy) {
 	this->weapon.setPosition(posx, posy);
 }
+
+sf::FloatRect Weapons::getWeaponBounds() {
+	sf::FloatRect weaponBounds = this->weapon.getGlobalBounds();
+	return weaponBounds;
+}
+int& Weapons::getDamage() {
+	return this->damage;
+}
