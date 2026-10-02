@@ -10,6 +10,7 @@ Player::Player(sf::Vector2f v, sf::Texture pT, sf::Sprite pS) {
 	this->rightSight = true;
 	this->seeWeapon = true;
 	this->playerTexture.setSmooth(false);
+	this->attackDuration = 0.2f;
 	if (!this->playerTexture.loadFromFile("rotations/south.png")) {
 		std::cout << "Texture couldn't load" <<std::endl;
 	}
@@ -63,6 +64,7 @@ void Player::draw(sf::RenderWindow& w) {
 	}
 }
 void Player::update(float dt) {
+	this->attackTimer -= dt;
 	this->Velocity.y += this->gravity * dt;
 	this->playerSprite.move(this->Velocity.x * dt, this->Velocity.y * dt);
 	if (this->rightSight) {
@@ -106,14 +108,30 @@ bool Player::collision(sf::Sprite& eS) {
 	}
 	return false;
 }
-void Player::attack() {
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-		this->playerWeapon.slide();
+bool Player::attack() {
+	if (this->isAttacking) {
+		if (this->releaseTime.getElapsedTime().asSeconds() >= this->attackDuration) {
+			this->isAttacking = false;
+			this->playerWeapon.recoil();
+		}
+		return this->isAttacking;
 	}
-	else {
-		this->playerWeapon.recoil();
+	if (this->attackTimer <= 0) {
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+			this->playerWeapon.slide();
+			this->releaseTime.restart();
+			this->isAttacking = true;
+			this->attackTimer = ATTACK_COOLDOWN;
+			return true;
+		}
 	}
+	return false;
 }
+
 void Player::getHit(int& dmg) {
 	this->health -= dmg;
 }
+Weapons& Player::getWeapon(){
+	return this->playerWeapon;
+}
+

@@ -10,7 +10,7 @@ public:
 	int& getDamage();
 	sf::FloatRect getWeaponBounds();
 	void recoil();
-	void slide();
+	bool slide();
 private:
 	sf::RectangleShape weapon;
 	int damage;

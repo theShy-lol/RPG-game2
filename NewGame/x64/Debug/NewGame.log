@@ -1,2 +1,29 @@
-﻿  main.cpp
+﻿  Enemy.cpp
+  Player.cpp
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(72,38): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(72,38): warning C4244:         with
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(72,38): warning C4244:         [
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(72,38): warning C4244:             T=float
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(72,38): warning C4244:         ]
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(71,70): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(71,70): warning C4244:         with
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(71,70): warning C4244:         [
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(71,70): warning C4244:             T=float
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(71,70): warning C4244:         ]
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(76,39): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(76,39): warning C4244:         with
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(76,39): warning C4244:         [
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(76,39): warning C4244:             T=float
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(76,39): warning C4244:         ]
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(75,67): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(75,67): warning C4244:         with
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(75,67): warning C4244:         [
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(75,67): warning C4244:             T=float
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(75,67): warning C4244:         ]
+  Terrain.cpp
+  Weapons.cpp
+C:\Users\Lucas\source\repos\NewGame\NewGame\Weapons.cpp(31,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Lucas\source\repos\NewGame\NewGame\Weapons.cpp(31,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  main.cpp
+  Generating Code...
   NewGame.vcxproj -> C:\Users\Lucas\source\repos\NewGame\x64\Debug\NewGame.exe

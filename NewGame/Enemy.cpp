@@ -7,7 +7,6 @@
 Enemy::Enemy(sf::Texture eT, sf::Sprite pS, sf::Vector2f v) : Player(v,eT, pS) {
 	this->playerTexture = eT;
 	this->seeWeapon = false;
-	this->health = 20;
 	this->playerTexture.setSmooth(false);
 	if (!this->playerTexture.loadFromFile("enemy/south.png")) {
 		std::cout << "Texture couldn't load" << std::endl;
@@ -52,17 +51,20 @@ int& Enemy::enemyDmg()  {
 	return this->damage;
 }
 
-bool Enemy::collisionEnemy(Weapons& sword) {
+bool Enemy::collisionEnemy(Weapons& sword, Player& player) {
 	float KnockBackStr = 10.f;
 	sf::FloatRect swordBounds = sword.getWeaponBounds();
 	sf::FloatRect enemyBound = this->playerSprite.getGlobalBounds();
-	if (enemyBound.intersects(swordBounds)) {
+	if (enemyBound.intersects(swordBounds) && player.attack() == true) {
 		float enemyCentreX = enemyBound.left + (enemyBound.width / 2);
-		if (enemyCentreX < swordBounds.width) {
+		float swordCentreX = swordBounds.left + (enemyBound.width / 2);
+		if (enemyCentreX < swordCentreX) {
 			this->playerSprite.move(KnockBackStr, -KnockBackStr / 2);
+			this->Velocity.x = -5.f;
 		}
 		else {
 			this->playerSprite.move(-KnockBackStr, -KnockBackStr / 2);
+			this->Velocity.x = 5.f;
 		}
 		return true;
 	}

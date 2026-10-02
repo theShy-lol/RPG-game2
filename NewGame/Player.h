@@ -12,20 +12,25 @@ public:
 	void draw(sf::RenderWindow& w);
 	void move(float dt);
 	void jump();
-	void attack();
+	bool attack();
 	virtual void getHit(int& dmg);
 	float getXPosition();
+	Weapons& getWeapon();
 protected:
 	sf::Texture playerTexture;
 	sf::Sprite playerSprite;
 	sf::Vector2f Velocity;
+	sf::Clock dmgTime;
+	sf::Clock releaseTime;
 	float gravity = 950.f;
+	float attackTimer = 0;
+	float attackDuration = 0.3f;;
+	float iFrames = 0.5f;
 	int health = 100;
 	int damage = 10;
-	sf::Clock dmgTime;
-	float iFrames = 0.5f;
 	bool inAir;
 	bool seeWeapon;
 	bool rightSight;
+	bool isAttacking;
 	Weapons playerWeapon;
 };

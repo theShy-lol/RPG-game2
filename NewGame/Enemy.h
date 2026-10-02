@@ -8,7 +8,7 @@ public:
 	Enemy(sf::Texture et, sf::Sprite es, sf::Vector2f v);
 	void update(float dt) override;
 	void die();
-	bool collisionEnemy(Weapons& sword);
+	bool collisionEnemy(Weapons& sword, Player& player);
 	sf::Sprite& getEnemy();
 	int& enemyDmg();
 private:
