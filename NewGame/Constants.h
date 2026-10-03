@@ -5,3 +5,5 @@
 #define GROUND_POSITION 720 / 2 + 250
 #define ENEMY_DIST 100
 #define ATTACK_COOLDOWN 0.5
+#define OBSTACLE_WIDTH 5.f
+#define OBSTACLE_HEIGHT 5.f

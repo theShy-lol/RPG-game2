@@ -5,6 +5,7 @@
 #include"Terrain.h"
 #include"Enemy.h"
 #include"Weapons.h"
+#include"Obstacle.h"
 
 
 
@@ -24,9 +25,11 @@ int main() {
 	sf::Sprite s;
 	//Entities
 	Player player(velocity, t, s);
-	Terrain terrain(100);
 	Enemy enemy(t, s, velocity);
 	Weapons weapon;
+	//WorldDesign
+	Terrain terrain(100);
+	Obstacle obstacle;
 	//Main loop
 	while (window.isOpen()) {
 		camera.setCenter(sf::Vector2f(player.getXPosition(), SCREEN_HEIGHT / 2));
@@ -57,6 +60,7 @@ int main() {
 		}
 		window.clear(sf::Color::Black);
 		terrain.drawTerrain(window);
+		obstacle.drawObstacle(window);
 		player.draw(window);
 		enemy.draw(window);
 		window.display();

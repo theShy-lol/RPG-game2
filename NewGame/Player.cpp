@@ -64,16 +64,20 @@ void Player::draw(sf::RenderWindow& w) {
 	}
 }
 void Player::update(float dt) {
+	sf::FloatRect playerBounds = this->playerSprite.getGlobalBounds();
 	this->attackTimer -= dt;
 	this->Velocity.y += this->gravity * dt;
 	this->playerSprite.move(this->Velocity.x * dt, this->Velocity.y * dt);
 	if (this->rightSight) {
 		this->playerWeapon.updateWeapon(this->playerSprite.getPosition().x + 18,
 		this->playerSprite.getPosition().y + 23);
+		this->weaponAngle = 0;
 	}
 	else {
 		this->playerWeapon.updateWeapon(this->playerSprite.getPosition().x,
 			this->playerSprite.getPosition().y + 23);
+		this->weaponAngle = 180;
+		this->playerWeapon.getWeapon().setOrigin(22 - playerBounds.width, 2.f);
 	}
 	if (this->playerSprite.getPosition().y > GROUND_POSITION) {
 		this->playerSprite.setPosition(this->playerSprite.getPosition().x,
@@ -118,7 +122,7 @@ bool Player::attack() {
 	}
 	if (this->attackTimer <= 0) {
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-			this->playerWeapon.slide();
+			this->playerWeapon.slide(this->weaponAngle);
 			this->releaseTime.restart();
 			this->isAttacking = true;
 			this->attackTimer = ATTACK_COOLDOWN;
@@ -134,4 +138,5 @@ void Player::getHit(int& dmg) {
 Weapons& Player::getWeapon(){
 	return this->playerWeapon;
 }
+
 

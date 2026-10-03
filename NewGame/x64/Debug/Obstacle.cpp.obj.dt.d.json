@@ -1,7 +1,7 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\main.cpp",
+        "Source": "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\obstacle.cpp",
         "ProvidedModule": "",
         "Includes": [
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\iostream",
@@ -128,6 +128,8 @@
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\clocale",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\ucrt\\locale.h",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\ostream",
+            "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\constants.h",
+            "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\obstacle.h",
             "c:\\users\\lucas\\downloads\\sfml\\sfml-2.6.1\\include\\sfml\\graphics.hpp",
             "c:\\users\\lucas\\downloads\\sfml\\sfml-2.6.1\\include\\sfml\\window.hpp",
             "c:\\users\\lucas\\downloads\\sfml\\sfml-2.6.1\\include\\sfml\\system.hpp",
@@ -219,12 +221,8 @@
             "c:\\users\\lucas\\downloads\\sfml\\sfml-2.6.1\\include\\sfml\\graphics\\sprite.hpp",
             "c:\\users\\lucas\\downloads\\sfml\\sfml-2.6.1\\include\\sfml\\graphics\\text.hpp",
             "c:\\users\\lucas\\downloads\\sfml\\sfml-2.6.1\\include\\sfml\\graphics\\vertexbuffer.hpp",
-            "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\constants.h",
-            "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\player.h",
-            "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\weapons.h",
-            "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\terrain.h",
-            "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\enemy.h",
-            "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\obstacle.h"
+            "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\random",
+            "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\xbit_ops.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

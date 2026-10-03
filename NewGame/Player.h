@@ -13,6 +13,7 @@ public:
 	void move(float dt);
 	void jump();
 	bool attack();
+	bool getFacing();
 	virtual void getHit(int& dmg);
 	float getXPosition();
 	Weapons& getWeapon();
@@ -28,6 +29,7 @@ protected:
 	float iFrames = 0.5f;
 	int health = 100;
 	int damage = 10;
+	int weaponAngle;
 	bool inAir;
 	bool seeWeapon;
 	bool rightSight;

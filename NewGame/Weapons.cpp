@@ -14,9 +14,9 @@ Weapons::Weapons() {
 void Weapons::drawWeapon(sf::RenderWindow &w) {
 	w.draw(this->weapon);
 }
-bool Weapons::slide() {
+bool Weapons::slide(int angle) {
 	if (!this->weaponDown) {
-		this->weapon.setRotation(0);
+		this->weapon.setRotation(angle);
 		this->weaponDown = true;
 	}
 	return true;
@@ -39,5 +39,7 @@ sf::FloatRect Weapons::getWeaponBounds() {
 int& Weapons::getDamage() {
 	return this->damage;
 }
-
+sf::RectangleShape Weapons::getWeapon() {
+	return this->weapon;
+}
 
