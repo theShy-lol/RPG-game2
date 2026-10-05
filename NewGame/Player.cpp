@@ -139,4 +139,42 @@ Weapons& Player::getWeapon(){
 	return this->playerWeapon;
 }
 
+void Player::checkObstacleCol(std::vector<sf::RectangleShape>& obs) {
+	for (auto obstacle : obs) {
+		sf::FloatRect obsBounds = obstacle.getGlobalBounds();
+		sf::FloatRect playerBounds = this->playerSprite.getGlobalBounds();
+		sf::FloatRect overlap;
+		float offset = playerBounds.width;
+		float offsetY = playerBounds.height;
+		float bottomY = playerBounds.top + playerBounds.height;
+		float bootomObs = obsBounds.top + obsBounds.height;
+		float rightSide = obsBounds.left + obsBounds.width;
+		if (playerBounds.intersects(obsBounds,overlap)) {
+			if (overlap.height > overlap.width) {
+				if (playerBounds.left < obsBounds.left) {
+					this->playerSprite.setPosition(obsBounds.left - offset,
+						this->playerSprite.getPosition().y);
+				}
+				else if (playerBounds.left > obsBounds.left) {
+					this->playerSprite.setPosition(rightSide,
+						this->playerSprite.getPosition().y);
+				}
+			}
+			else if (overlap.width > overlap.height) {
+				 if (playerBounds.top < obsBounds.top) {
+					this->playerSprite.setPosition(this->playerSprite.getPosition().x,
+						obsBounds.top - offsetY);
+					this->Velocity.y = 0.f;
+					this->inAir = false;
+				}
+				 else { 
+					 this->playerSprite.setPosition(this->playerSprite.getPosition().x,
+						 bootomObs);
+					 this->Velocity.y = 0.f;
+				 }
+			}
+		}
+	}
+}
+
 

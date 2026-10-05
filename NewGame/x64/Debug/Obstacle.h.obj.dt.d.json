@@ -128,6 +128,8 @@
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\clocale",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\ucrt\\locale.h",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\ostream",
+            "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\vector",
+            "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\__msvc_bit_utils.hpp",
             "c:\\users\\lucas\\downloads\\sfml\\sfml-2.6.1\\include\\sfml\\graphics.hpp",
             "c:\\users\\lucas\\downloads\\sfml\\sfml-2.6.1\\include\\sfml\\window.hpp",
             "c:\\users\\lucas\\downloads\\sfml\\sfml-2.6.1\\include\\sfml\\system.hpp",
@@ -149,7 +151,6 @@
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\algorithm",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\__msvc_heap_algorithms.hpp",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\__msvc_int128.hpp",
-            "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\__msvc_bit_utils.hpp",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\__msvc_minmax.hpp",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\locale",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\xlocbuf",
@@ -180,7 +181,6 @@
             "c:\\users\\lucas\\downloads\\sfml\\sfml-2.6.1\\include\\sfml\\window\\sensor.hpp",
             "c:\\users\\lucas\\downloads\\sfml\\sfml-2.6.1\\include\\sfml\\window\\touch.hpp",
             "c:\\users\\lucas\\downloads\\sfml\\sfml-2.6.1\\include\\sfml\\window\\videomode.hpp",
-            "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\vector",
             "c:\\users\\lucas\\downloads\\sfml\\sfml-2.6.1\\include\\sfml\\window\\window.hpp",
             "c:\\users\\lucas\\downloads\\sfml\\sfml-2.6.1\\include\\sfml\\window\\windowbase.hpp",
             "c:\\users\\lucas\\downloads\\sfml\\sfml-2.6.1\\include\\sfml\\window\\vulkan.hpp",
@@ -218,7 +218,9 @@
             "c:\\users\\lucas\\downloads\\sfml\\sfml-2.6.1\\include\\sfml\\graphics\\glsl.inl",
             "c:\\users\\lucas\\downloads\\sfml\\sfml-2.6.1\\include\\sfml\\graphics\\sprite.hpp",
             "c:\\users\\lucas\\downloads\\sfml\\sfml-2.6.1\\include\\sfml\\graphics\\text.hpp",
-            "c:\\users\\lucas\\downloads\\sfml\\sfml-2.6.1\\include\\sfml\\graphics\\vertexbuffer.hpp"
+            "c:\\users\\lucas\\downloads\\sfml\\sfml-2.6.1\\include\\sfml\\graphics\\vertexbuffer.hpp",
+            "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\player.h",
+            "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\weapons.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

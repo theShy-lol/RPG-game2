@@ -50,6 +50,7 @@ int main() {
 		player.attack();
 		player.update(dt);
 		enemy.update(dt);
+		player.checkObstacleCol(obstacle.getObstacle());
 		if (player.collision(enemy.getEnemy()) == true) {
 			player.getHit(enemy.enemyDmg());
 			std::cout << "Player hit" << std::endl;
@@ -60,6 +61,9 @@ int main() {
 		}
 		window.clear(sf::Color::Black);
 		terrain.drawTerrain(window);
+		obstacle.straightObstacle(10);
+		obstacle.stairsObstacle(5);
+		obstacle.decreaseObstacle(10);
 		obstacle.drawObstacle(window);
 		player.draw(window);
 		enemy.draw(window);

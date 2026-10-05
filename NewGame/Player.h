@@ -12,8 +12,8 @@ public:
 	void draw(sf::RenderWindow& w);
 	void move(float dt);
 	void jump();
+	void checkObstacleCol(std::vector<sf::RectangleShape>& obs);
 	bool attack();
-	bool getFacing();
 	virtual void getHit(int& dmg);
 	float getXPosition();
 	Weapons& getWeapon();
