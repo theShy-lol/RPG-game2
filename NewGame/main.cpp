@@ -53,11 +53,9 @@ int main() {
 		player.checkObstacleCol(obstacle.getObstacle());
 		if (player.collision(enemy.getEnemy()) == true) {
 			player.getHit(enemy.enemyDmg());
-			std::cout << "Player hit" << std::endl;
 		}
 		if (enemy.collisionEnemy(player.getWeapon(), player) == true) {
 			enemy.getHit(weapon.getDamage());
-			std::cout << "Enemy hit" << std::endl;
 		}
 		window.clear(sf::Color::Black);
 		terrain.drawTerrain(window);

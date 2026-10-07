@@ -1,15 +1,10 @@
 #include<iostream>
 #include"Constants.h"
 #include"Obstacle.h"
-#include<random>
 
 
-int getRandomNr() {
-	static std::random_device rd;
-	static std::mt19937 gen(rd());
-	std::uniform_int_distribution<> randomDist(50, 120);
-	return randomDist(gen);
-}
+
+
 
 Obstacle::Obstacle() {
 	for (auto obstacl : obstacle) {
@@ -31,9 +26,9 @@ std::vector<sf::RectangleShape>& Obstacle::getObstacle() {
 
 void Obstacle::straightObstacle(int nr) {
 	float spaceX = OBSTACLE_WIDTH;
-	float startX = 1500;
-	float startY = GROUND_POSITION - 300;
-	int spaceY = 0.f;
+	float startX = 1200 + this->obstacleStartAgain;
+	float startY = GROUND_POSITION - this->obstacleStartAgain;
+	float spaceY = 0.f;
 	for (int i = 0; i < nr; ++i) {
 		sf::RectangleShape straightStairs;
 		straightStairs.setPosition(sf::Vector2f(startX + (i * spaceX),
@@ -47,7 +42,7 @@ void Obstacle::straightObstacle(int nr) {
 void Obstacle::stairsObstacle(int nr) {
 	float spaceX = OBSTACLE_WIDTH;
 	float startX = 1200;
-	int spaceY = -OBSTACLE_HEIGHT;
+	float spaceY = -OBSTACLE_HEIGHT;
 	float startY = GROUND_POSITION;
 	for (int i = 0; i < nr; ++i) {
 		sf::RectangleShape moron;
@@ -57,12 +52,13 @@ void Obstacle::stairsObstacle(int nr) {
 		moron.setFillColor(sf::Color::Red);
 		this->obstacle.push_back(moron);
 	}
+
 }
 void Obstacle::decreaseObstacle(int nr) {
 	float spaceX = OBSTACLE_WIDTH;
-	float startX = 1200;
-	int spaceY = OBSTACLE_HEIGHT;
-	float startY = GROUND_POSITION;
+	float startX = 1200 + (this->obstacleStartAgain * 4);
+	float spaceY = OBSTACLE_HEIGHT;
+	float startY = GROUND_POSITION - this->obstacleStartAgain;
 	for (int i = 0; i < nr; ++i) {
 		sf::RectangleShape moron;
 		moron.setPosition(sf::Vector2f(startX + (i * spaceX),

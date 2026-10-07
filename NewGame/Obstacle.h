@@ -14,4 +14,5 @@ public:
 	std::vector<sf::RectangleShape>& getObstacle();
 private:
 	std::vector<sf::RectangleShape> obstacle;
+	float obstacleStartAgain = 300;
 };

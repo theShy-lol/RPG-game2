@@ -1,7 +1,2 @@
-﻿  Obstacle.cpp
-C:\Users\Lucas\source\repos\NewGame\NewGame\Obstacle.cpp(36,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Lucas\source\repos\NewGame\NewGame\Obstacle.cpp(50,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Lucas\source\repos\NewGame\NewGame\Obstacle.cpp(64,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  main.cpp
-  Generating Code...
+﻿  main.cpp
   NewGame.vcxproj -> C:\Users\Lucas\source\repos\NewGame\x64\Debug\NewGame.exe

@@ -222,9 +222,7 @@
             "c:\\users\\lucas\\downloads\\sfml\\sfml-2.6.1\\include\\sfml\\graphics\\text.hpp",
             "c:\\users\\lucas\\downloads\\sfml\\sfml-2.6.1\\include\\sfml\\graphics\\vertexbuffer.hpp",
             "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\player.h",
-            "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\weapons.h",
-            "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\random",
-            "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\xbit_ops.h"
+            "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\weapons.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

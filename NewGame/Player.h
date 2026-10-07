@@ -19,6 +19,8 @@ public:
 	Weapons& getWeapon();
 protected:
 	sf::Texture playerTexture;
+	sf::Texture west;
+	sf::Texture east;
 	sf::Sprite playerSprite;
 	sf::Vector2f Velocity;
 	sf::Clock dmgTime;
@@ -35,4 +37,5 @@ protected:
 	bool rightSight;
 	bool isAttacking;
 	Weapons playerWeapon;
+
 };

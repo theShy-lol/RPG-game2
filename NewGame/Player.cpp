@@ -14,6 +14,12 @@ Player::Player(sf::Vector2f v, sf::Texture pT, sf::Sprite pS) {
 	if (!this->playerTexture.loadFromFile("rotations/south.png")) {
 		std::cout << "Texture couldn't load" <<std::endl;
 	}
+	if(!this->west.loadFromFile("rotations/west.png")) {
+		std::cout << "Texture couldn't load" << std::endl;
+	}
+	if(!this->east.loadFromFile("rotations/east.png")) {
+		std::cout << "Texture couldn't load" << std::endl;
+	}
 	this->playerSprite.setTexture(this->playerTexture);
 	this->playerSprite.setPosition(sf::Vector2f(SCREEN_WIDTH / 2, GROUND_POSITION));
 }
@@ -21,25 +27,16 @@ void Player::move(float dt) {
 	this->Velocity.x = 0.f;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 		this->Velocity.x = -360.f;
-		if (!this->playerTexture.loadFromFile("rotations/west.png")) {
-			std::cout << "Texture couldn't load" << std::endl;
-		}
-		this->playerSprite.setTexture(this->playerTexture);
+		this->playerSprite.setTexture(this->west);
 		this->rightSight = false;
 	}
 	
 	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
 		this->Velocity.x = 360.f;
-		if (!this->playerTexture.loadFromFile("rotations/east.png")) {
-			std::cout << "Texture couldn't load" << std::endl;
-		}
-		this->playerSprite.setTexture(this->playerTexture);
+		this->playerSprite.setTexture(this->east);
 		this->rightSight = true;
 	}
 	else {
-		if (!this->playerTexture.loadFromFile("rotations/south.png")) {
-			std::cout << "Texture couldn't load" << std::endl;
-		}
 		this->playerSprite.setTexture(this->playerTexture);
 	}
 	if (this->playerSprite.getPosition().x < 0) {
