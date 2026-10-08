@@ -56,7 +56,7 @@ void Obstacle::stairsObstacle(int nr) {
 }
 void Obstacle::decreaseObstacle(int nr) {
 	float spaceX = OBSTACLE_WIDTH;
-	float startX = 1200 + (this->obstacleStartAgain * 4);
+	float startX = 1200 + (this->obstacleStartAgain * 3);
 	float spaceY = OBSTACLE_HEIGHT;
 	float startY = GROUND_POSITION - this->obstacleStartAgain;
 	for (int i = 0; i < nr; ++i) {
