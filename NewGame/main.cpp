@@ -24,9 +24,17 @@ int main() {
 	sf::Texture t;
 	sf::Sprite s;
 	//Entities
-	Player player(velocity, t, s);
-	Enemy enemy(t, s, velocity);
+	int playerHealth = 100;
+	int enemieOneHealth = 100;
+	int enemieTwoHealth = 150;
+	int enemieThreeHealth = 200;
+	Player player(velocity, t, s,playerHealth);
+	Enemy enemy(t, s, velocity,enemieOneHealth);
+	Enemy enemy2(t, s, velocity,enemieTwoHealth);
+	Enemy enemy3(t, s, velocity, enemieThreeHealth);
 	Weapons weapon;
+	std::vector <Enemy> enemies = { enemy, enemy2, enemy3 };
+	
 	//WorldDesign
 	Terrain terrain(100);
 	Obstacle obstacle;
@@ -44,9 +52,10 @@ int main() {
 			camera.setCenter(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 		}
 		window.setView(camera);
-		player.move(dt);
+		player.move();
 		player.jump();
 		enemy.die();
+		enemy.move();
 		player.attack();
 		player.update(dt);
 		enemy.update(dt);
@@ -61,7 +70,7 @@ int main() {
 		terrain.drawTerrain(window);
 		obstacle.straightObstacle(10);
 		obstacle.stairsObstacle(5);
-		obstacle.decreaseObstacle(10);
+		obstacle.decreaseObstacle(7);
 		obstacle.drawObstacle(window);
 		player.draw(window);
 		enemy.draw(window);

@@ -6,11 +6,11 @@
 
 class Player {
 public:
-	Player(sf::Vector2f v, sf::Texture pT, sf::Sprite pS);
+	Player(sf::Vector2f v, sf::Texture pT, sf::Sprite pS, int h);
 	virtual void update(float dt);
 	bool collision(sf::Sprite& eS);
 	void draw(sf::RenderWindow& w);
-	void move(float dt);
+	virtual void move();
 	void jump();
 	void checkObstacleCol(std::vector<sf::RectangleShape>& obs);
 	bool attack();
@@ -29,7 +29,7 @@ protected:
 	float attackTimer = 0;
 	float attackDuration = 0.3f;;
 	float iFrames = 0.5f;
-	int health = 100;
+	int health;
 	int damage = 10;
 	int weaponAngle;
 	bool inAir;

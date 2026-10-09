@@ -3,7 +3,7 @@
 #include"Player.h"
 #include"Constants.h"
 
-Player::Player(sf::Vector2f v, sf::Texture pT, sf::Sprite pS) {
+Player::Player(sf::Vector2f v, sf::Texture pT, sf::Sprite pS, int h) {
 	this->playerTexture = pT;
 	this->playerSprite = pS;
 	this->Velocity = v;
@@ -11,6 +11,7 @@ Player::Player(sf::Vector2f v, sf::Texture pT, sf::Sprite pS) {
 	this->seeWeapon = true;
 	this->playerTexture.setSmooth(false);
 	this->attackDuration = 0.2f;
+	this->health = h;
 	if (!this->playerTexture.loadFromFile("rotations/south.png")) {
 		std::cout << "Texture couldn't load" <<std::endl;
 	}
@@ -23,7 +24,7 @@ Player::Player(sf::Vector2f v, sf::Texture pT, sf::Sprite pS) {
 	this->playerSprite.setTexture(this->playerTexture);
 	this->playerSprite.setPosition(sf::Vector2f(SCREEN_WIDTH / 2, GROUND_POSITION));
 }
-void Player::move(float dt) {
+void Player::move() {
 	this->Velocity.x = 0.f;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 		this->Velocity.x = -360.f;
