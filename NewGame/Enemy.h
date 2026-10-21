@@ -2,7 +2,6 @@
 #include<iostream>
 #include<SFML/Graphics.hpp>
 #include"Player.h"
-#include<vector>
 
 class Enemy : public Player {
 public:
@@ -10,6 +9,7 @@ public:
 	void update(float dt) override;
 	void move() override;
 	void die();
+	void setEnemyPos(float x, float y);
 	bool collisionEnemy(Weapons& sword, Player& player);
 	sf::Sprite& getEnemy();
 	int& enemyDmg();

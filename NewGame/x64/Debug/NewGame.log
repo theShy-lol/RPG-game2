@@ -1,2 +1,7 @@
-﻿  Enemy.cpp
-  NewGame.vcxproj -> C:\Users\Lucas\source\repos\NewGame\x64\Debug\NewGame.exe
+﻿  EnemySpawner.cpp
+  main.cpp
+C:\Users\Lucas\source\repos\NewGame\NewGame\EnemySpawner.cpp(6,84): error C2512: 'Enemy': no appropriate default constructor available
+      C:\Users\Lucas\source\repos\NewGame\NewGame\Enemy.h(6,7):
+      see declaration of 'Enemy'
+  
+  Generating Code...

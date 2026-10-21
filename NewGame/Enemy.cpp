@@ -71,5 +71,7 @@ bool Enemy::collisionEnemy(Weapons& sword, Player& player) {
 	return false;
 }
 
-
+void Enemy::setEnemyPos(float x, float y) {
+	this->playerSprite.setPosition(x, y);
+}
 

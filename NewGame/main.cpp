@@ -6,7 +6,7 @@
 #include"Enemy.h"
 #include"Weapons.h"
 #include"Obstacle.h"
-
+#include"EnemySpawn.h"
 
 
 int main() {
@@ -30,14 +30,12 @@ int main() {
 	int enemieThreeHealth = 200;
 	Player player(velocity, t, s,playerHealth);
 	Enemy enemy(t, s, velocity,enemieOneHealth);
-	Enemy enemy2(t, s, velocity,enemieTwoHealth);
-	Enemy enemy3(t, s, velocity, enemieThreeHealth);
 	Weapons weapon;
-	std::vector <Enemy> enemies = { enemy, enemy2, enemy3 };
 	
 	//WorldDesign
 	Terrain terrain(100);
 	Obstacle obstacle;
+	EnemySpawner enemies(50.f, 0.f, obstacle.getObstacle());
 	//Main loop
 	while (window.isOpen()) {
 		camera.setCenter(sf::Vector2f(player.getXPosition(), SCREEN_HEIGHT / 2));
@@ -73,7 +71,7 @@ int main() {
 		obstacle.decreaseObstacle(7);
 		obstacle.drawObstacle(window);
 		player.draw(window);
-		enemy.draw(window);
+		enemies.drawEnemies(window);
 		window.display();
 	}
 }

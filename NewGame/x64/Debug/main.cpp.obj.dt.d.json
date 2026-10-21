@@ -224,7 +224,8 @@
             "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\weapons.h",
             "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\terrain.h",
             "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\enemy.h",
-            "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\obstacle.h"
+            "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\obstacle.h",
+            "c:\\users\\lucas\\source\\repos\\newgame\\newgame\\enemyspawn.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []
