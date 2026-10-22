@@ -1,7 +1,27 @@
-﻿  EnemySpawner.cpp
+﻿  Enemy.cpp
+  EnemySpawner.cpp
+  Obstacle.cpp
+  Player.cpp
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(69,38): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(69,38): warning C4244:         with
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(69,38): warning C4244:         [
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(69,38): warning C4244:             T=float
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(69,38): warning C4244:         ]
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(68,70): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(68,70): warning C4244:         with
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(68,70): warning C4244:         [
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(68,70): warning C4244:             T=float
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(68,70): warning C4244:         ]
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(74,39): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(74,39): warning C4244:         with
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(74,39): warning C4244:         [
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(74,39): warning C4244:             T=float
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(74,39): warning C4244:         ]
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(73,67): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(73,67): warning C4244:         with
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(73,67): warning C4244:         [
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(73,67): warning C4244:             T=float
+C:\Users\Lucas\source\repos\NewGame\NewGame\Player.cpp(73,67): warning C4244:         ]
   main.cpp
-C:\Users\Lucas\source\repos\NewGame\NewGame\EnemySpawner.cpp(6,84): error C2512: 'Enemy': no appropriate default constructor available
-      C:\Users\Lucas\source\repos\NewGame\NewGame\Enemy.h(6,7):
-      see declaration of 'Enemy'
-  
   Generating Code...
+  NewGame.vcxproj -> C:\Users\Lucas\source\repos\NewGame\x64\Debug\NewGame.exe

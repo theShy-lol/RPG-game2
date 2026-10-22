@@ -6,7 +6,7 @@
 
 class Player {
 public:
-	Player(sf::Vector2f v, sf::Texture pT, sf::Sprite pS, int h);
+	Player(sf::Vector2f v, int h);
 	virtual void update(float dt);
 	bool collision(sf::Sprite& eS);
 	void draw(sf::RenderWindow& w);

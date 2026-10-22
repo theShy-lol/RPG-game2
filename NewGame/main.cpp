@@ -21,15 +21,13 @@ int main() {
 	sf::Vector2f velocity(250.f, 250.f);
 	float dt = 0;
 	bool inAir = false;
-	sf::Texture t;
-	sf::Sprite s;
 	//Entities
 	int playerHealth = 100;
 	int enemieOneHealth = 100;
 	int enemieTwoHealth = 150;
 	int enemieThreeHealth = 200;
-	Player player(velocity, t, s,playerHealth);
-	Enemy enemy(t, s, velocity,enemieOneHealth);
+	Player player(velocity,playerHealth);
+	Enemy enemy(velocity,enemieOneHealth);
 	Weapons weapon;
 	
 	//WorldDesign

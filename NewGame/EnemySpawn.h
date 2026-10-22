@@ -9,6 +9,5 @@ public:
 	void drawEnemies(sf::RenderWindow& w);
 private:
 	std::vector<Enemy> enemies;
-	Enemy templateBoy;
 	int numOfEnemies = 15;
 };

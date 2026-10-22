@@ -3,9 +3,7 @@
 #include"Player.h"
 #include"Constants.h"
 
-Player::Player(sf::Vector2f v, sf::Texture pT, sf::Sprite pS, int h) {
-	this->playerTexture = pT;
-	this->playerSprite = pS;
+Player::Player(sf::Vector2f v, int h) {
 	this->Velocity = v;
 	this->rightSight = true;
 	this->seeWeapon = true;

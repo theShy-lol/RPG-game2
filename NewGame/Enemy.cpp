@@ -4,9 +4,8 @@
 #include"Enemy.h"
 
 
-Enemy::Enemy(sf::Texture eT, sf::Sprite pS, sf::Vector2f v, int h) : Player(v,eT, pS,h) {
+Enemy::Enemy(sf::Vector2f v, int h) : Player(v,h) {
 	this->health = h;
-	this->enemyTexture = eT;
 	this->seeWeapon = false;
 	this->enemyTexture.setSmooth(false);
 	if (!this->enemyTexture.loadFromFile("enemy/south.png")) {
@@ -20,7 +19,6 @@ Enemy::Enemy(sf::Texture eT, sf::Sprite pS, sf::Vector2f v, int h) : Player(v,eT
 	}
 	this->playerSprite.scale(1.3f, 1.3f);
 	this->playerSprite.setTexture(this->enemyTexture);
-	this->playerSprite.setPosition(sf::Vector2f(SCREEN_WIDTH / 2 + 200, GROUND_POSITION));
 
 }
 

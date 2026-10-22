@@ -5,7 +5,7 @@
 
 class Enemy : public Player {
 public:
-	Enemy(sf::Texture et, sf::Sprite es, sf::Vector2f v, int h);
+	Enemy(sf::Vector2f v, int h);
 	void update(float dt) override;
 	void move() override;
 	void die();
