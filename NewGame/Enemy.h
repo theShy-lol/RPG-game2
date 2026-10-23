@@ -13,6 +13,7 @@ public:
 	bool collisionEnemy(Weapons& sword, Player& player);
 	sf::Sprite& getEnemy();
 	int& enemyDmg();
+	float& getVelocity();
 private:
 	sf::Texture enemyTexture;
 	sf::Texture enemyWest;
