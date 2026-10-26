@@ -35,6 +35,9 @@ void Obstacle::straightObstacle(int nr) {
 			startY + (i * spaceY)));
 		straightStairs.setSize(sf::Vector2f(OBSTACLE_WIDTH, OBSTACLE_HEIGHT));
 		straightStairs.setFillColor(sf::Color::Red);
+		if (i >= 4 && i <= 5) {
+			continue;
+		}
 		this->obstacle.push_back(straightStairs);
 	}
 
@@ -65,6 +68,9 @@ void Obstacle::decreaseObstacle(int nr) {
 			startY + (i * spaceY)));
 		moron.setSize(sf::Vector2f(OBSTACLE_WIDTH, OBSTACLE_HEIGHT));
 		moron.setFillColor(sf::Color::Red);
+		if (i >= 3 && i <= 4) {
+			continue;
+		}
 		this->obstacle.push_back(moron);
 	}
 }

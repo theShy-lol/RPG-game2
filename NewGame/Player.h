@@ -7,12 +7,14 @@
 class Player {
 public:
 	Player(sf::Vector2f v, int h);
-	virtual void update(float dt);
+	virtual void update(float dt, bool gap);
 	bool collision(sf::Sprite& eS);
 	void draw(sf::RenderWindow& w);
 	virtual void move();
 	void jump();
+	void isFalling(std::vector<sf::RectangleShape>& terrain);
 	void checkObstacleCol(std::vector<sf::RectangleShape>& obs);
+	bool die();
 	bool attack();
 	virtual void getHit(int& dmg);
 	float getXPosition();
@@ -36,6 +38,7 @@ protected:
 	bool seeWeapon;
 	bool rightSight;
 	bool isAttacking;
+	bool falling;
 	Weapons playerWeapon;
 
 };

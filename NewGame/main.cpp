@@ -33,14 +33,14 @@ int main() {
 	//WorldDesign
 	Terrain terrain(100);
 	Obstacle obstacle;
-	EnemySpawner enemies(800.f, GROUND_POSITION);
+	EnemySpawner enemies(800.f, GROUND_POSITION / 6);
 	//Main loop
 	while (window.isOpen()) {
 		camera.setCenter(sf::Vector2f(player.getXPosition(), SCREEN_HEIGHT / 2));
 		sf::Event event;
 		dt = clock.restart().asSeconds();
 		while (window.pollEvent(event)) {
-			if (event.type == sf::Event::Closed) {
+			if (event.type == sf::Event::Closed || player.die()) {
 				window.close();
 			}
 		}
@@ -51,8 +51,9 @@ int main() {
 		player.move();
 		player.jump();
 		player.attack();
-		player.update(dt);
-		enemies.SpawnUpdate(dt, player, weapon,obstacle.getObstacle());
+		player.die();
+		player.update(dt, terrain.getGaps());
+		enemies.SpawnUpdate(dt, player, weapon,obstacle.getObstacle(), terrain.getGaps());
 		player.checkObstacleCol(obstacle.getObstacle());
 		window.clear(sf::Color::Black);
 		terrain.drawTerrain(window);

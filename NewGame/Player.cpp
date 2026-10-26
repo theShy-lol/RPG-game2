@@ -59,7 +59,7 @@ void Player::draw(sf::RenderWindow& w) {
 		this->playerWeapon.drawWeapon(w);
 	}
 }
-void Player::update(float dt) {
+void Player::update(float dt, bool gap) {
 	sf::FloatRect playerBounds = this->playerSprite.getGlobalBounds();
 	this->attackTimer -= dt;
 	this->Velocity.y += this->gravity * dt;
@@ -75,7 +75,7 @@ void Player::update(float dt) {
 		this->weaponAngle = 180;
 		this->playerWeapon.getWeapon().setOrigin(22 - playerBounds.width, 2.f);
 	}
-	if (this->playerSprite.getPosition().y > GROUND_POSITION) {
+	if (this->playerSprite.getPosition().y > GROUND_POSITION && !this->falling) {
 		this->playerSprite.setPosition(this->playerSprite.getPosition().x,
 			GROUND_POSITION);
 		this->Velocity.y = 0.f;
@@ -90,7 +90,6 @@ bool Player::collision(sf::Sprite& eS) {
 	sf::FloatRect enemyBounds = eS.getGlobalBounds();
 	if (playerBound.intersects(enemyBounds)) {
 		if (this->dmgTime.getElapsedTime().asSeconds() >= this->iFrames) {
-			this->health -= 10;
 			this->dmgTime.restart();
 		}
 		float playerCentreX = playerBound.left + (playerBound.width / 2);
@@ -173,4 +172,20 @@ void Player::checkObstacleCol(std::vector<sf::RectangleShape>& obs) {
 	}
 }
 
+bool Player::die() {
+	if (this->health <= 0) {
+		this->playerSprite.scale(sf::Vector2f(0.f, 0.f));
+		return true;
+	}
+	return false;
+}
+
+void Player::isFalling(std::vector<sf::RectangleShape>& terrain) {
+	for (const auto& terr : terrain) {
+		if (terr.getFillColor() == sf::Color::Black) {
+			this->falling = true;
+		}
+		this->falling = false;
+	}
+}
 

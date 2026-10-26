@@ -7,8 +7,10 @@ class Terrain {
 public:
 	Terrain(int n);
 	void drawTerrain(sf::RenderWindow &w);
+	bool getGaps();
 private:
 	int nr;
 	sf::RectangleShape terrain;
-	std::vector<sf::RectangleShape> floor;
+	std::vector<sf::RectangleShape> allTerrain;
+	bool empty = false;
 };

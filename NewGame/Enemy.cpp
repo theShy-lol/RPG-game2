@@ -27,14 +27,20 @@ void Enemy::move() {
 		this->Velocity.x = 260;
 		this->playerSprite.setTexture(this->enemyEast);
 	}
-	else if (this->playerSprite.getPosition().x > SCREEN_WIDTH) {
+	else if (this->playerSprite.getPosition().x > SCREEN_WIDTH * 4) {
 		this->Velocity.x = -260;
 		this->playerSprite.setTexture(this->enemyWest);
 	}
 }
 
-void Enemy::update(float dt) {
-	this->playerSprite.move(this->Velocity.x * dt, 0.0f);
+void Enemy::update(float dt, bool gap) {
+	this->Velocity.y += this->gravity * dt;
+	this->playerSprite.move(this->Velocity.x * dt, this->Velocity.y * dt);
+	if (this->playerSprite.getPosition().y > GROUND_POSITION && !gap) {
+		this->playerSprite.setPosition(this->playerSprite.getPosition().x,
+			GROUND_POSITION);
+		this->Velocity.y = 0.f;
+	}
 }
 
 sf::Sprite& Enemy::getEnemy() {

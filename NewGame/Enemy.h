@@ -6,7 +6,7 @@
 class Enemy : public Player {
 public:
 	Enemy(sf::Vector2f v, int h);
-	void update(float dt) override;
+	void update(float dt,bool gap) override;
 	void move() override;
 	void die();
 	void setEnemyPos(float x, float y);
