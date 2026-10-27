@@ -156,8 +156,12 @@
     <ClInclude Include="EnemySpawn.h" />
     <ClInclude Include="Obstacle.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="Weapons.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="NewGame.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

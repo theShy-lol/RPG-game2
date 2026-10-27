@@ -59,7 +59,7 @@ void Player::draw(sf::RenderWindow& w) {
 		this->playerWeapon.drawWeapon(w);
 	}
 }
-void Player::update(float dt, bool gap) {
+void Player::update(float dt) {
 	sf::FloatRect playerBounds = this->playerSprite.getGlobalBounds();
 	this->attackTimer -= dt;
 	this->Velocity.y += this->gravity * dt;
@@ -75,13 +75,18 @@ void Player::update(float dt, bool gap) {
 		this->weaponAngle = 180;
 		this->playerWeapon.getWeapon().setOrigin(22 - playerBounds.width, 2.f);
 	}
-	if (this->playerSprite.getPosition().y > GROUND_POSITION && !this->falling) {
+	if (isFalling() && this->deathTimer.getElapsedTime().asSeconds() >= 1.f) {
+		this->health = 0;
+	}
+	
+	if (this->playerSprite.getPosition().y > GROUND_POSITION && !isFalling()) {
 		this->playerSprite.setPosition(this->playerSprite.getPosition().x,
 			GROUND_POSITION);
 		this->Velocity.y = 0.f;
 		this->inAir = false;
 	}
 }
+
 float Player::getXPosition() {
 	return this->playerSprite.getPosition().x;
 }
@@ -180,12 +185,33 @@ bool Player::die() {
 	return false;
 }
 
-void Player::isFalling(std::vector<sf::RectangleShape>& terrain) {
-	for (const auto& terr : terrain) {
-		if (terr.getFillColor() == sf::Color::Black) {
-			this->falling = true;
+bool Player::isFalling() {
+	bool fallStart = false;
+	if (this->playerSprite.getPosition().x >= 800 &&
+		this->playerSprite.getPosition().x <= 875) {
+		if (!fallStart) {
+			this->deathTimer.restart();
+			fallStart = true;
 		}
-		this->falling = false;
+		this->inAir = true;
+		return true;
 	}
+	if (this->playerSprite.getPosition().x >= 1200
+		&& this->playerSprite.getPosition().x <= 1275) {
+		this->inAir = true;
+		return true;
+	}
+	if (this->playerSprite.getPosition().x >= 1400
+		&& this->playerSprite.getPosition().x <= 1475) {
+		this->inAir = true;
+		return true;
+	}
+	if (this->playerSprite.getPosition().x >= 1700 &&
+		this->playerSprite.getPosition().x <= 1875) {
+		this->inAir = true;
+		return true;
+	}
+
+	return false;
 }
 

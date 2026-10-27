@@ -7,16 +7,16 @@
 class Player {
 public:
 	Player(sf::Vector2f v, int h);
-	virtual void update(float dt, bool gap);
+	virtual void update(float dt);
 	bool collision(sf::Sprite& eS);
 	void draw(sf::RenderWindow& w);
 	virtual void move();
 	void jump();
-	void isFalling(std::vector<sf::RectangleShape>& terrain);
 	void checkObstacleCol(std::vector<sf::RectangleShape>& obs);
 	bool die();
 	bool attack();
 	virtual void getHit(int& dmg);
+	bool isFalling();
 	float getXPosition();
 	Weapons& getWeapon();
 protected:
@@ -27,6 +27,7 @@ protected:
 	sf::Vector2f Velocity;
 	sf::Clock dmgTime;
 	sf::Clock releaseTime;
+	sf::Clock deathTimer;
 	float gravity = 950.f;
 	float attackTimer = 0;
 	float attackDuration = 0.3f;;
@@ -38,7 +39,6 @@ protected:
 	bool seeWeapon;
 	bool rightSight;
 	bool isAttacking;
-	bool falling;
 	Weapons playerWeapon;
 
 };

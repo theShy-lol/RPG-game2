@@ -52,8 +52,8 @@ int main() {
 		player.jump();
 		player.attack();
 		player.die();
-		player.update(dt, terrain.getGaps());
-		enemies.SpawnUpdate(dt, player, weapon,obstacle.getObstacle(), terrain.getGaps());
+		player.update(dt);
+		enemies.SpawnUpdate(dt, player, weapon,obstacle.getObstacle());
 		player.checkObstacleCol(obstacle.getObstacle());
 		window.clear(sf::Color::Black);
 		terrain.drawTerrain(window);

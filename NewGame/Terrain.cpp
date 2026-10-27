@@ -6,7 +6,7 @@
 
 Terrain::Terrain(int n) {
 	this->nr = n;
-	float space = 80.f;
+	float space = 50.f;
 	float startx = 0.f;
 	float gap = 50.f;
 	this->allTerrain.reserve(n);
@@ -35,6 +35,3 @@ void Terrain::drawTerrain(sf::RenderWindow &w) {
 	}
 }
 
-bool Terrain::getGaps() {
-	return this->empty;
-}

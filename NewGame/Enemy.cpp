@@ -33,10 +33,10 @@ void Enemy::move() {
 	}
 }
 
-void Enemy::update(float dt, bool gap) {
+void Enemy::update(float dt) {
 	this->Velocity.y += this->gravity * dt;
 	this->playerSprite.move(this->Velocity.x * dt, this->Velocity.y * dt);
-	if (this->playerSprite.getPosition().y > GROUND_POSITION && !gap) {
+	if (this->playerSprite.getPosition().y > GROUND_POSITION) {
 		this->playerSprite.setPosition(this->playerSprite.getPosition().x,
 			GROUND_POSITION);
 		this->Velocity.y = 0.f;

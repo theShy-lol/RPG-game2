@@ -23,12 +23,12 @@ void EnemySpawner::drawEnemies(sf::RenderWindow& w) {
 }
 
 
-void EnemySpawner::SpawnUpdate(float dt, Player& player, Weapons& weapon, std::vector<sf::RectangleShape>& obs, bool gap) {
+void EnemySpawner::SpawnUpdate(float dt, Player& player, Weapons& weapon, std::vector<sf::RectangleShape>& obs) {
 	sf::FloatRect overlap;
 	for (int p = 0; p < this->numOfEnemies; ++p) {
 		this->enemies[p].die();
 		this->enemies[p].move();
-		this->enemies[p].update(dt, gap);
+		this->enemies[p].update(dt);
 		sf::FloatRect enemieBounds = enemies[p].getEnemy().getGlobalBounds();
 		if (player.collision(this->enemies[p].getEnemy()) == true) {
 			player.getHit(this->enemies[p].enemyDmg());
