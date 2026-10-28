@@ -14,9 +14,6 @@ Terrain::Terrain(int n) {
 		if (startx + (i * space) >= 700 && startx + (i * space) <= 850) {
 			continue;
 		}
-		if (startx + (i * space) >= 1100 && startx + (i * space) <= 1200) {
-			continue;
-		}
 		if (startx + (i * space) >= 1300 && startx + (i * space) <= 1400) {
 			continue;
 		}
@@ -35,3 +32,6 @@ void Terrain::drawTerrain(sf::RenderWindow &w) {
 	}
 }
 
+std::vector<sf::RectangleShape>&Terrain::getTerrain() {
+	return this->allTerrain;
+}

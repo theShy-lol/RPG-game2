@@ -7,6 +7,7 @@ class Terrain {
 public:
 	Terrain(int n);
 	void drawTerrain(sf::RenderWindow &w);
+	std::vector<sf::RectangleShape>& getTerrain();
 private:
 	int nr;
 	sf::RectangleShape terrain;

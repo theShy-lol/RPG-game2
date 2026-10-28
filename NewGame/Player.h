@@ -12,11 +12,12 @@ public:
 	void draw(sf::RenderWindow& w);
 	virtual void move();
 	void jump();
-	void checkObstacleCol(std::vector<sf::RectangleShape>& obs);
+	bool checkObstacleCol(std::vector<sf::RectangleShape>& obs);
+	bool checkTerrainCol(std::vector<sf::RectangleShape>& obs);
 	bool die();
 	bool attack();
 	virtual void getHit(int& dmg);
-	bool isFalling();
+	void isFalling(std::vector<sf::RectangleShape>& terrain, std::vector<sf::RectangleShape>& obs);
 	float getXPosition();
 	Weapons& getWeapon();
 protected:
@@ -39,6 +40,8 @@ protected:
 	bool seeWeapon;
 	bool rightSight;
 	bool isAttacking;
+	bool hasTerrain = false;
+	bool fallStart = false;
 	Weapons playerWeapon;
 
 };

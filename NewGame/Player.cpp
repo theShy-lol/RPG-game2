@@ -66,7 +66,7 @@ void Player::update(float dt) {
 	this->playerSprite.move(this->Velocity.x * dt, this->Velocity.y * dt);
 	if (this->rightSight) {
 		this->playerWeapon.updateWeapon(this->playerSprite.getPosition().x + 18,
-		this->playerSprite.getPosition().y + 23);
+			this->playerSprite.getPosition().y + 23);
 		this->weaponAngle = 0;
 	}
 	else {
@@ -74,16 +74,6 @@ void Player::update(float dt) {
 			this->playerSprite.getPosition().y + 23);
 		this->weaponAngle = 180;
 		this->playerWeapon.getWeapon().setOrigin(22 - playerBounds.width, 2.f);
-	}
-	if (isFalling() && this->deathTimer.getElapsedTime().asSeconds() >= 1.f) {
-		this->health = 0;
-	}
-	
-	if (this->playerSprite.getPosition().y > GROUND_POSITION && !isFalling()) {
-		this->playerSprite.setPosition(this->playerSprite.getPosition().x,
-			GROUND_POSITION);
-		this->Velocity.y = 0.f;
-		this->inAir = false;
 	}
 }
 
@@ -139,7 +129,7 @@ Weapons& Player::getWeapon(){
 	return this->playerWeapon;
 }
 
-void Player::checkObstacleCol(std::vector<sf::RectangleShape>& obs) {
+bool Player::checkObstacleCol(std::vector<sf::RectangleShape>& obs) {
 	for (auto obstacle : obs) {
 		sf::FloatRect obsBounds = obstacle.getGlobalBounds();
 		sf::FloatRect playerBounds = this->playerSprite.getGlobalBounds();
@@ -148,16 +138,19 @@ void Player::checkObstacleCol(std::vector<sf::RectangleShape>& obs) {
 		float offsetY = playerBounds.height;
 		float bottomY = playerBounds.top + playerBounds.height;
 		float bootomObs = obsBounds.top + obsBounds.height;
+		float playerRight = playerBounds.left + playerBounds.width;
 		float rightSide = obsBounds.left + obsBounds.width;
 		if (playerBounds.intersects(obsBounds,overlap)) {
 			if (overlap.height > overlap.width) {
 				if (playerBounds.left < obsBounds.left) {
 					this->playerSprite.setPosition(obsBounds.left - offset,
 						this->playerSprite.getPosition().y);
+					return false;
 				}
 				else if (playerBounds.left > obsBounds.left) {
 					this->playerSprite.setPosition(rightSide,
 						this->playerSprite.getPosition().y);
+					return false;
 				}
 			}
 			else if (overlap.width > overlap.height) {
@@ -165,14 +158,22 @@ void Player::checkObstacleCol(std::vector<sf::RectangleShape>& obs) {
 					this->playerSprite.setPosition(this->playerSprite.getPosition().x,
 						obsBounds.top - offsetY);
 					this->Velocity.y = 0.f;
+					this->hasTerrain = true;
+					return true;
 					this->inAir = false;
 				}
 				 else { 
 					 this->playerSprite.setPosition(this->playerSprite.getPosition().x,
 						 bootomObs);
 					 this->Velocity.y = 0.f;
+					 return false;
 				 }
 			}
+		}
+		if ((playerRight > obsBounds.left && playerBounds.left < rightSide) &&
+			(obsBounds.top > bottomY)) {
+			this->hasTerrain = true;
+			return true;
 		}
 	}
 }
@@ -185,33 +186,50 @@ bool Player::die() {
 	return false;
 }
 
-bool Player::isFalling() {
-	bool fallStart = false;
-	if (this->playerSprite.getPosition().x >= 800 &&
-		this->playerSprite.getPosition().x <= 875) {
-		if (!fallStart) {
-			this->deathTimer.restart();
-			fallStart = true;
+void Player::isFalling(std::vector<sf::RectangleShape>& terrain, std::vector<sf::RectangleShape>& obs) {
+	if (!checkTerrainCol(terrain) || !checkObstacleCol(obs)) {
+		if (!this->hasTerrain) {
+			this->inAir = true;
 		}
-		this->inAir = true;
-		return true;
-	}
-	if (this->playerSprite.getPosition().x >= 1200
-		&& this->playerSprite.getPosition().x <= 1275) {
-		this->inAir = true;
-		return true;
-	}
-	if (this->playerSprite.getPosition().x >= 1400
-		&& this->playerSprite.getPosition().x <= 1475) {
-		this->inAir = true;
-		return true;
-	}
-	if (this->playerSprite.getPosition().x >= 1700 &&
-		this->playerSprite.getPosition().x <= 1875) {
-		this->inAir = true;
-		return true;
-	}
+		if (!this->hasTerrain && this->inAir) {
+			if (!this->fallStart) {
+				this->deathTimer.restart();
+				this->fallStart = true;
 
-	return false;
+			}
+			if (this->fallStart) {
+				if (this->deathTimer.getElapsedTime().asSeconds() >= 3.f)
+					std::cout << "No terrain\n";
+			}
+		}
+	}
 }
 
+bool Player::checkTerrainCol(std::vector<sf::RectangleShape>& terrain) {
+	this->hasTerrain = false;
+	for (const auto& terr : terrain) {
+		sf::FloatRect terrainBounds = terr.getGlobalBounds();
+		sf::FloatRect playerBounds = this->playerSprite.getGlobalBounds();
+		float playerBottom = playerBounds.top + playerBounds.height;
+		float playerRight = playerBounds.left + playerBounds.width;
+		float terrainRight = terrainBounds.left + terrainBounds.width;
+		float offsetY = playerBounds.height;
+		if (playerBounds.intersects(terrainBounds)) {
+			this->hasTerrain = true;
+			this->inAir = false;
+			if (playerBounds.top < terrainBounds.top) {
+				this->playerSprite.setPosition(this->playerSprite.getPosition().x,
+					terrainBounds.top - offsetY);
+				this->Velocity.y = 0.f;
+				return true;
+			}
+			break;
+		}
+		if ((playerRight > terrainBounds.left && playerBounds.left < terrainRight) &&
+			(terrainBounds.top > playerBottom)) {
+			this->hasTerrain = true;
+			return true;
+		}
+	}
+	return false;
+}

@@ -34,6 +34,9 @@ int main() {
 	Terrain terrain(100);
 	Obstacle obstacle;
 	EnemySpawner enemies(800.f, GROUND_POSITION / 6);
+	obstacle.straightObstacle(10);
+	obstacle.stairsObstacle(5);
+	obstacle.decreaseObstacle(7);
 	//Main loop
 	while (window.isOpen()) {
 		camera.setCenter(sf::Vector2f(player.getXPosition(), SCREEN_HEIGHT / 2));
@@ -55,11 +58,10 @@ int main() {
 		player.update(dt);
 		enemies.SpawnUpdate(dt, player, weapon,obstacle.getObstacle());
 		player.checkObstacleCol(obstacle.getObstacle());
+		player.checkTerrainCol(terrain.getTerrain());
+		player.isFalling(obstacle.getObstacle(), terrain.getTerrain());
 		window.clear(sf::Color::Black);
 		terrain.drawTerrain(window);
-		obstacle.straightObstacle(10);
-		obstacle.stairsObstacle(5);
-		obstacle.decreaseObstacle(7);
 		obstacle.drawObstacle(window);
 		player.draw(window);
 		enemies.drawEnemies(window);
