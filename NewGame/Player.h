@@ -40,8 +40,8 @@ protected:
 	bool seeWeapon;
 	bool rightSight;
 	bool isAttacking;
-	bool hasTerrain = false;
 	bool fallStart = false;
+	bool noTerrain;
 	Weapons playerWeapon;
 
 };

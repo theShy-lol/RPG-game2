@@ -59,7 +59,6 @@ int main() {
 		enemies.SpawnUpdate(dt, player, weapon,obstacle.getObstacle());
 		player.checkObstacleCol(obstacle.getObstacle());
 		player.checkTerrainCol(terrain.getTerrain());
-		player.isFalling(obstacle.getObstacle(), terrain.getTerrain());
 		window.clear(sf::Color::Black);
 		terrain.drawTerrain(window);
 		obstacle.drawObstacle(window);

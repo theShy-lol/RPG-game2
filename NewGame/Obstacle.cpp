@@ -52,7 +52,7 @@ void Obstacle::stairsObstacle(int nr) {
 		moron.setPosition(sf::Vector2f(startX + (i * spaceX),
 			startY + (i * spaceY)));
 		moron.setSize(sf::Vector2f(OBSTACLE_WIDTH, OBSTACLE_HEIGHT));
-		moron.setFillColor(sf::Color::Red);
+		moron.setFillColor(sf::Color::Yellow);
 		this->obstacle.push_back(moron);
 	}
 

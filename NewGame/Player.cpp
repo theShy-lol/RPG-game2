@@ -11,12 +11,12 @@ Player::Player(sf::Vector2f v, int h) {
 	this->attackDuration = 0.2f;
 	this->health = h;
 	if (!this->playerTexture.loadFromFile("rotations/south.png")) {
-		std::cout << "Texture couldn't load" <<std::endl;
-	}
-	if(!this->west.loadFromFile("rotations/west.png")) {
 		std::cout << "Texture couldn't load" << std::endl;
 	}
-	if(!this->east.loadFromFile("rotations/east.png")) {
+	if (!this->west.loadFromFile("rotations/west.png")) {
+		std::cout << "Texture couldn't load" << std::endl;
+	}
+	if (!this->east.loadFromFile("rotations/east.png")) {
 		std::cout << "Texture couldn't load" << std::endl;
 	}
 	this->playerSprite.setTexture(this->playerTexture);
@@ -29,8 +29,8 @@ void Player::move() {
 		this->playerSprite.setTexture(this->west);
 		this->rightSight = false;
 	}
-	
-	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
 		this->Velocity.x = 360.f;
 		this->playerSprite.setTexture(this->east);
 		this->rightSight = true;
@@ -125,7 +125,7 @@ bool Player::attack() {
 void Player::getHit(int& dmg) {
 	this->health -= dmg;
 }
-Weapons& Player::getWeapon(){
+Weapons& Player::getWeapon() {
 	return this->playerWeapon;
 }
 
@@ -140,7 +140,7 @@ bool Player::checkObstacleCol(std::vector<sf::RectangleShape>& obs) {
 		float bootomObs = obsBounds.top + obsBounds.height;
 		float playerRight = playerBounds.left + playerBounds.width;
 		float rightSide = obsBounds.left + obsBounds.width;
-		if (playerBounds.intersects(obsBounds,overlap)) {
+		if (playerBounds.intersects(obsBounds, overlap)) {
 			if (overlap.height > overlap.width) {
 				if (playerBounds.left < obsBounds.left) {
 					this->playerSprite.setPosition(obsBounds.left - offset,
@@ -154,25 +154,23 @@ bool Player::checkObstacleCol(std::vector<sf::RectangleShape>& obs) {
 				}
 			}
 			else if (overlap.width > overlap.height) {
-				 if (playerBounds.top < obsBounds.top) {
+				if (playerBounds.top < obsBounds.top) {
 					this->playerSprite.setPosition(this->playerSprite.getPosition().x,
 						obsBounds.top - offsetY);
 					this->Velocity.y = 0.f;
-					this->hasTerrain = true;
 					return true;
 					this->inAir = false;
 				}
-				 else { 
-					 this->playerSprite.setPosition(this->playerSprite.getPosition().x,
-						 bootomObs);
-					 this->Velocity.y = 0.f;
-					 return false;
-				 }
+				else {
+					this->playerSprite.setPosition(this->playerSprite.getPosition().x,
+						bootomObs);
+					this->Velocity.y = 0.f;
+					return false;
+				}
 			}
 		}
 		if ((playerRight > obsBounds.left && playerBounds.left < rightSide) &&
 			(obsBounds.top > bottomY)) {
-			this->hasTerrain = true;
 			return true;
 		}
 	}
@@ -187,11 +185,9 @@ bool Player::die() {
 }
 
 void Player::isFalling(std::vector<sf::RectangleShape>& terrain, std::vector<sf::RectangleShape>& obs) {
-	if (!checkTerrainCol(terrain) || !checkObstacleCol(obs)) {
-		if (!this->hasTerrain) {
+	if (!checkTerrainCol(terrain)) {
 			this->inAir = true;
-		}
-		if (!this->hasTerrain && this->inAir) {
+		if (this->inAir) {
 			if (!this->fallStart) {
 				this->deathTimer.restart();
 				this->fallStart = true;
@@ -206,7 +202,6 @@ void Player::isFalling(std::vector<sf::RectangleShape>& terrain, std::vector<sf:
 }
 
 bool Player::checkTerrainCol(std::vector<sf::RectangleShape>& terrain) {
-	this->hasTerrain = false;
 	for (const auto& terr : terrain) {
 		sf::FloatRect terrainBounds = terr.getGlobalBounds();
 		sf::FloatRect playerBounds = this->playerSprite.getGlobalBounds();
@@ -215,7 +210,6 @@ bool Player::checkTerrainCol(std::vector<sf::RectangleShape>& terrain) {
 		float terrainRight = terrainBounds.left + terrainBounds.width;
 		float offsetY = playerBounds.height;
 		if (playerBounds.intersects(terrainBounds)) {
-			this->hasTerrain = true;
 			this->inAir = false;
 			if (playerBounds.top < terrainBounds.top) {
 				this->playerSprite.setPosition(this->playerSprite.getPosition().x,
@@ -227,7 +221,6 @@ bool Player::checkTerrainCol(std::vector<sf::RectangleShape>& terrain) {
 		}
 		if ((playerRight > terrainBounds.left && playerBounds.left < terrainRight) &&
 			(terrainBounds.top > playerBottom)) {
-			this->hasTerrain = true;
 			return true;
 		}
 	}
